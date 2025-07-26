@@ -25,6 +25,11 @@ def get_db():
     finally:
         db.close()
 
+
+@app.get("/about")
+def hello():
+    return {'message' : "bond mra"}
+
 @app.post("/users")
 def create_user(user: schemas.userCreate, db: Session = Depends(get_db)):
     new_user = models.User(name=user.name, email=user.email)
